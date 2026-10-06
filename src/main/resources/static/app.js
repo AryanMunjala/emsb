@@ -3,6 +3,15 @@ const submitButton = document.querySelector("#submit-button");
 const statusMessage = document.querySelector("#form-status");
 const passwordInput = document.querySelector("#password");
 const passwordToggle = document.querySelector("#password-toggle");
+const apiBaseUrl = window.EMSB_API_BASE || "";
+const isLocalApp = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+const submitLabel = submitButton.querySelector(".submit-label");
+
+if (!apiBaseUrl && !isLocalApp) {
+  submitButton.disabled = true;
+  statusMessage.textContent = "Registration is not connected yet. The employee API must be deployed and configured first.";
+  statusMessage.classList.add("is-error");
+}
 
 passwordToggle.addEventListener("click", () => {
   const showingPassword = passwordInput.type === "password";
@@ -39,6 +48,7 @@ form.addEventListener("submit", async (event) => {
   statusMessage.textContent = "";
   statusMessage.classList.remove("is-error");
 
+  if (!apiBaseUrl && !isLocalApp) return;
   if (!form.reportValidity()) return;
 
   const formData = new FormData(form);
@@ -50,10 +60,10 @@ form.addEventListener("submit", async (event) => {
   };
 
   submitButton.disabled = true;
-  submitButton.querySelector(".submit-label").textContent = "Creating account...";
+  submitLabel.textContent = "Creating account...";
 
   try {
-    const response = await fetch("/api/employees", {
+    const response = await fetch(`${apiBaseUrl}/api/employees`, {
       method: "POST",
       headers: { "Content-Type": "application/json", "Accept": "application/json" },
       body: JSON.stringify(employee)
@@ -86,6 +96,6 @@ form.addEventListener("submit", async (event) => {
     statusMessage.classList.add("is-error");
   } finally {
     submitButton.disabled = false;
-    submitButton.querySelector(".submit-label").textContent = "Create account";
+    submitLabel.textContent = "Create account";
   }
 });
