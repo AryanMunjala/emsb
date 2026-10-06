@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f3ee">
+  <title>Faculty registration | EMSB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="welcome-panel" aria-label="EMSB faculty portal">
+      <a class="wordmark" href="/" aria-label="EMSB home">
+        <span class="wordmark-icon" aria-hidden="true">E</span>
+        <span>EMSB<span class="wordmark-caption">FACULTY PORTAL</span></span>
+      </a>
+
+      <div class="welcome-copy">
+        <p class="overline"><span class="overline-line"></span> ACADEMIC COMMUNITY</p>
+        <h1>Good work<br>starts <em>together.</em></h1>
+        <p class="welcome-description">A place for the people who make learning matter.</p>
+      </div>
+
+      <div class="panel-footer">
+        <span class="footer-mark" aria-hidden="true">E</span>
+        <span>Employee management<br>system</span>
+        <span class="footer-year">EST. 2026</span>
+      </div>
+      <span class="panel-orbit orbit-one" aria-hidden="true"></span>
+      <span class="panel-orbit orbit-two" aria-hidden="true"></span>
+    </aside>
+
+    <main class="form-panel">
+      <div class="form-wrap">
+        <div class="mobile-wordmark" aria-hidden="true"><span class="wordmark-icon">E</span> EMSB</div>
+        <div class="form-heading">
+          <p class="overline form-overline">FACULTY REGISTRATION <span class="form-step">01 / 01</span></p>
+          <h2>Create your account</h2>
+          <p class="form-intro">Add your details to join the faculty directory.</p>
+        </div>
+
+        <form id="registration-form" novalidate>
+          <div class="field-group">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="e.g. Jordan Lee" required maxlength="120">
+            <span class="field-error" id="name-error"></span>
+          </div>
+
+          <div class="field-group">
+            <label for="email">Work email</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@school.edu" required maxlength="254">
+            <span class="field-error" id="email-error"></span>
+          </div>
+
+          <div class="field-group">
+            <label for="password">Password</label>
+            <div class="password-wrap">
+              <input id="password" name="password" type="password" autocomplete="new-password" placeholder="At least 8 characters" minlength="8" required>
+              <button class="password-toggle" id="password-toggle" type="button" aria-label="Show password" aria-pressed="false">Show</button>
+            </div>
+            <span class="field-hint">Use at least 8 characters.</span>
+            <span class="field-error" id="password-error"></span>
+          </div>
+
+          <div class="account-type" aria-label="Account type">
+            <span class="account-type-icon" aria-hidden="true">F</span>
+            <span><strong>Faculty account</strong><small>Registration for faculty members</small></span>
+            <span class="account-check" aria-hidden="true">&#10003;</span>
+          </div>
+
+          <button class="submit-button" id="submit-button" type="submit">
+            <span class="submit-label">Create account</span>
+            <span class="submit-arrow" aria-hidden="true">&#8594;</span>
+          </button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <p class="privacy-note"><span aria-hidden="true">&#9679;</span> Your password is stored securely.</p>
+      </div>
+      <footer class="form-footer"><span>EMSB</span><span>FACULTY SERVICES</span><a href="/api/employees">EMPLOYEE API</a></footer>
+    </main>
+  </div>
+</body>
+</html>
